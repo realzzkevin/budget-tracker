@@ -5,7 +5,6 @@ const request = window.indexedDB.open('Budget_db');
 
 request.onupgradeneeded = function (event) {
     console.log('upgrade in indexDB');
-    console.log(event);
 
     db = event.target.result;
     if (db.objectStoreNames.length === 0) {
@@ -51,7 +50,6 @@ function checkDatabase() {
             })
                 .then((response) => response.json())
                 .then((res) => {
-                    console.log('res');
                     console.log('upload success');
                     if (res.length !== 0) {
                         const trans = db.transaction(["budgets"], "readwrite");
