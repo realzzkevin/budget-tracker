@@ -8,7 +8,7 @@ request.onupgradeneeded = function (event) {
     console.log(event);
 
     db = event.target.result;
-    if (db.objectStoreNames.length === 0){
+    if (db.objectStoreNames.length === 0) {
         db.createObjectStore('budgets', { autoIncrement: true });
     }
 }
@@ -53,9 +53,9 @@ function checkDatabase() {
                 .then((res) => {
                     console.log('res');
                     console.log('upload success');
-                    if (res.length !==0) {         
+                    if (res.length !== 0) {
                         const trans = db.transaction(["budgets"], "readwrite");
-                        const localStore = trans.objectStore("budgets");               
+                        const localStore = trans.objectStore("budgets");
                         localStore.clear();
                         console.log('objectStore cleared');
                     }
